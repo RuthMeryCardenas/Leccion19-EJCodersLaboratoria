@@ -8,13 +8,11 @@ function Coder(promotion, name, photo){
   this.name = name;
   this.photo = photo;
 }
-function createDivCoder(parent, urlImage){
-  var coderDiv = document.createElement('div');
+function createImgCoder(parent, urlImage){
   var coderImg = document.createElement('img');
-  coderDiv.setAttribute('class', 'coder');
+  coderImg.setAttribute('class', 'coder');
   coderImg.setAttribute('src',urlImage);
-  coderDiv.appendChild(coderImg);
-  parent.appendChild(coderDiv);
+  parent.appendChild(coderImg);
 }
 function printCoders(container, filter){
   while(container.hasChildNodes()){
@@ -22,10 +20,10 @@ function printCoders(container, filter){
  }
   coders.forEach(function(coder){
     if (filter == coder.promotion) {
-      createDivCoder(container, coder.photo);
+      createImgCoder(container, coder.photo);
     }
     if (filter == 'all') {
-      createDivCoder(container, coder.photo);
+      createImgCoder(container, coder.photo);
     }
   });
 }
