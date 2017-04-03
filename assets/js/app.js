@@ -14,17 +14,21 @@ function createImgCoder(parent, urlImage){
   coderImg.setAttribute('src',urlImage);
   parent.appendChild(coderImg);
 }
-function printCoders(container, filter){
-  while(container.hasChildNodes()){
-	container.removeChild(container.lastChild);
- }
+function printAllCoders(container){
   coders.forEach(function(coder){
-    if (filter == coder.promotion) {
       createImgCoder(container, coder.photo);
-    }
-    if (filter == 'all') {
-      createImgCoder(container, coder.photo);
-    }
+  });
+}
+function filterCoders(filter){
+  coders.forEach(function(coder, index){
+    var img = document.getElementsByClassName('coder')[index];
+      if (filter == coder.promotion) {
+        img.classList.remove('hide');
+        img.classList.add('show');
+      }else{
+        img.classList.remove('show');
+        img.classList.add('hide');
+      }
   });
 }
 //CARGANDO CODERS
@@ -58,9 +62,8 @@ function loadCoders () {
 //EVENTOS
 window.addEventListener('load', function (){
   loadCoders();
-  printCoders(codersContainer, 'all')
+  printAllCoders(codersContainer);
 });
 promotionSelect.onchange = function () {
-  printCoders(codersContainer, promotionSelect.value)
-  console.log(promotionSelect.value);
+  filterCoders(promotionSelect.value)
 }

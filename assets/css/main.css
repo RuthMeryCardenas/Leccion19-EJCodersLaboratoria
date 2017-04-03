@@ -13,6 +13,12 @@ select{
   padding: 2px;
   font-size: 14px;
 }
-.coder{
+#list_coders img{
   margin: 1em;
+}
+.show{
+  display: inline;
+}
+.hide{
+  display: none;
 }
